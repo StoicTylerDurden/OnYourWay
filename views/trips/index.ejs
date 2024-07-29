@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Browse Trips</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Your Trips</h1>
+    <a href="/users/<%= user._id %>/trips/new">Create a Trip</a>
+
+    <!-- trips List -->
+    <ul>
+    <% trips.forEach((trip)=>{ %>
+        <a href="/users/<%=user._id%>/trips/<%=trip._id%>">
+            <li><%= trip.startLocation %> To <%= trip.endLocation %></li>
+        </a>
+    <% }) %>
+    </ul>
+
+    <h1>Available Trips</h1>
+</body>
+</html>

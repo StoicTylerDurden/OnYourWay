@@ -1,0 +1,29 @@
+<!-- views/trips/show.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= trip.title %></title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+
+  <h2>Trip Details:</h2>
+  <h3><%= trip.startLocation %> to  <%= trip.endLocation %></h3>
+  <h3>Available Seats: <%= trip.availableSeats %> </h3>
+  <h3>Date: <%= trip.date %></h3>
+
+
+  <h2>Driver Details: </h2>
+
+  <h3>Name: <%=user.name%> </h3>
+  <h3>Age: <%=user.age%> </h3>
+  <h3>gender: <%=user.gender%> </h3>
+    <a href="/users/<%=user._id%>/trips/<%=trip._id%>/edit">EDIT</a>
+
+  <form action="/users/<%=user._id%>/trips/<%=trip._id%>?_method=DELETE" method="POST">
+    <button type="submit">DELETE</button>
+  </form>
+</body>
+</html>

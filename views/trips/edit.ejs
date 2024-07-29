@@ -1,0 +1,62 @@
+<!-- views/trips/edit.js -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Editing <%= trip.startLocation %> to <%= trip.endLocation %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit <%= trip.startLocation %> to <%= trip.endLocation %></h1>
+
+    <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" value="<%= user.name %>" required>
+        
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" value="<%= user.age %>" required>
+        
+        <label for="gender">Gender:</label>
+        <select name="gender" id="gender">
+            <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+            <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+        </select>
+
+        <label for="startLocation">Start Location:</label>
+        <input type="text" name="startLocation" id="startLocation" value="<%= trip.startLocation %>" required>
+
+        <label for="endLocation">End Location:</label>
+        <input type="text" name="endLocation" id="endLocation" value="<%= trip.endLocation %>" required>
+
+        <label for="availableSeats">Available Seats:</label>
+        <input type="number" name="availableSeats" id="availableSeats" value="<%= trip.availableSeats %>" required>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" value="<%= trip.date.toISOString().split('T')[0] %>" required>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <script>
+        // Function to format the date to YYYY-MM-DD
+        function formatDate(date) {
+            const d = new Date(date);
+            let month = '' + (d.getMonth() + 1);
+            let day = '' + d.getDate();
+            const year = d.getFullYear();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return [year, month, day].join('-');
+        }
+
+        // Set the min attribute for the date input to today's date
+        const today = new Date();
+        document.getElementById('date').setAttribute('min', formatDate(today));
+    </script>
+    
+</body>
+</html>
