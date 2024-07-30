@@ -9,15 +9,17 @@ const TripSchema = new Schema({
   availableSeats: { type: Number, required: true },
   date: { type: Date, required: true },
   notes: String,
+  userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 // Define the user schema with trips embedded
 const UserSchema = new Schema({
   username: { type: String, required: true },
   password: { type: String, required: true },
-  name: { type: String, required: true },
-  age: { type: Number, required: true },
-  gender: { type: String, enum: ['male', 'female'], required: true },
+  name: { type: String },
+  email: { type: String},
+  age: { type: Number},
+  gender: { type: String, enum: ['male', 'female']},
   trips: [TripSchema]
 });
 

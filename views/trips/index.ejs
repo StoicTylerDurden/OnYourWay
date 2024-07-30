@@ -11,15 +11,22 @@
     <h1>Your Trips</h1>
     <a href="/users/<%= user._id %>/trips/new">Create a Trip</a>
 
-    <!-- trips List -->
+    <!-- User's trips list -->
     <ul>
     <% trips.forEach((trip)=>{ %>
-        <a href="/users/<%=user._id%>/trips/<%=trip._id%>">
+        <a href="/users/<%= user._id %>/trips/<%= trip._id %>">
             <li><%= trip.startLocation %> To <%= trip.endLocation %></li>
         </a>
     <% }) %>
     </ul>
 
     <h1>Available Trips</h1>
+    <ul>
+        <% availableTrips.forEach((trip) => { %>
+          <a href="/users/<%= trip.userId %>/trips/<%= trip._id %>">
+            <li><%= trip.startLocation %> to <%= trip.endLocation %></li>
+          </a>
+        <% }) %>
+      </ul>
 </body>
 </html>

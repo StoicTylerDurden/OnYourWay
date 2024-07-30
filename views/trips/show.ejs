@@ -4,26 +4,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= trip.title %></title>
+  <title>Trip Details</title>
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
 
-  <h2>Trip Details:</h2>
-  <h3><%= trip.startLocation %> to  <%= trip.endLocation %></h3>
-  <h3>Available Seats: <%= trip.availableSeats %> </h3>
-  <h3>Date: <%= trip.date %></h3>
+  <% if (trip) { %>
+    <h2>Trip Details:</h2>
+    <h3><%= trip.startLocation %> to <%= trip.endLocation %></h3>
+    <h3>Available Seats: <%= trip.availableSeats %></h3>
+    <h3>Date: <%= trip.date.toDateString() %></h3>
 
+    <% if (user) { %>
+      <h2>Driver Details:</h2>
+      <h3>Name: <%= user.name || 'N/A' %></h3>
+      <h3>Age: <%= user.age || 'N/A' %></h3>
+      <h3>Gender: <%= user.gender || 'N/A' %></h3>
+      <h3>Email: <%= user.email || 'N/A' %></h3>
+    <% } else { %>
+      <h2>Driver Details: Not Available</h2>
+    <% } %>
 
-  <h2>Driver Details: </h2>
-
-  <h3>Name: <%=user.name%> </h3>
-  <h3>Age: <%=user.age%> </h3>
-  <h3>gender: <%=user.gender%> </h3>
-    <a href="/users/<%=user._id%>/trips/<%=trip._id%>/edit">EDIT</a>
-
-  <form action="/users/<%=user._id%>/trips/<%=trip._id%>?_method=DELETE" method="POST">
-    <button type="submit">DELETE</button>
-  </form>
+    <% if (user && user._id.equals(currentUserId)) { %>
+      <a href="/users/<%= user._id %>/trips/<%= trip._id %>/edit">EDIT</a>
+      <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=DELETE" method="POST">
+        <button type="submit">DELETE</button>
+      </form>
+    <% } %>
+  <% } else { %>
+    <h2>Trip not found</h2>
+  <% } %>
 </body>
 </html>
