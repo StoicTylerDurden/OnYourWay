@@ -41,7 +41,7 @@ router.get('/available', async (req, res) => {
     // Filter out current user's trips
     const availableTrips = allTrips.filter(trip => !currentUser.trips.some(userTrip => userTrip._id.equals(trip._id)));
 
-    res.render('available.ejs', { user: currentUser, trips: currentUser.trips, availableTrips });
+    res.render('trips/available.ejs', { user: currentUser, trips: currentUser.trips, availableTrips });
   } catch (error) {
     console.log(error);
     res.redirect('/');
