@@ -4,7 +4,9 @@
     <a href="/">Home</a>
 
     <a href="/users/<%= user._id %>/trips/available">Available</a>
-    <a href="/users/<%= user._id %>/trips">Browse Trips</a>
+    <a href="/users/<%= user._id %>/trips">Your Created Trips</a>
+    <a href="/users/<%= user._id %>/trips/booked">Your Booked Trips</a>
+
     <a href="/auth/sign-out">Sign Out</a>
 
     <% } else { %>

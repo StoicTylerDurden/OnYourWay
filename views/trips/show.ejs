@@ -30,6 +30,17 @@
       <form action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=DELETE" method="POST">
         <button type="submit">DELETE</button>
       </form>
+    <% } else { %>
+      <!-- Check if the user has already booked the trip -->
+      <% const isBooked = currentUserBookedTrips.includes(trip._id.toString()); %>
+      <% if (trip.availableSeats > 0 && !isBooked) { %>
+        <!-- Only show the Book button if the user didn't create the trip and hasn't booked it already -->
+        <form action="/users/<%= currentUserId %>/trips/<%= trip._id %>/book" method="POST">
+          <button type="submit">Book</button>
+        </form>
+      <% } else { %>
+        <p><%= isBooked ? 'You have already booked this trip.' : 'No available seats.' %></p>
+      <% } %>
     <% } %>
   <% } else { %>
     <h2>Trip not found</h2>
