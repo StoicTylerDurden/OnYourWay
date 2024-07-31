@@ -12,7 +12,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^3.1.4"
   },
-  "name": "carpoolingapp",
+  "name": "onyourway",
   "version": "1.0.0",
   "description": "## View my Project Planning in Trello:  [Project Planning](https://trello.com/b/Clqy38fv/car-pooling)",
   "main": "server.js",
