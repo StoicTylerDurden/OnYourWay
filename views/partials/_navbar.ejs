@@ -3,9 +3,10 @@
   
     <a href="/">Home</a>
 
+    <a href="/users/<%= user._id %>/trips/available">Available</a>
     <a href="/users/<%= user._id %>/trips">Browse Trips</a>
     <a href="/auth/sign-out">Sign Out</a>
-  
+
     <% } else { %>
   
     <a href="/auth/sign-in">Sign In</a>
