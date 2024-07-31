@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   if (req.session.user) {
-    res.redirect(`/users/${req.session.user._id}/trips`);
+    res.render('home.ejs');
   } else {
     res.render('index.ejs');
   }

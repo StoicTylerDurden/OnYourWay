@@ -20,13 +20,6 @@
     <% }) %>
     </ul>
 
-    <h1>Available Trips</h1>
-    <ul>
-        <% availableTrips.forEach((trip) => { %>
-          <a href="/users/<%= trip.userId %>/trips/<%= trip._id %>">
-            <li><%= trip.startLocation %> to <%= trip.endLocation %></li>
-          </a>
-        <% }) %>
-      </ul>
+  
 </body>
 </html>

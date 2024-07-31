@@ -3,6 +3,12 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
+function isDateInThePast(date) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Clear the time part
+  return date < today;
+}
+
 // Get all trips and filter out current user's trips
 router.get('/', async (req, res) => {
   try {
@@ -20,6 +26,28 @@ router.get('/', async (req, res) => {
     console.log(error);
     res.redirect('/');
   }
+
+  
+});
+
+router.get('/available', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const allUsers = await User.find();
+
+    // Extract all trips with userId
+    const allTrips = allUsers.flatMap(user => user.trips.map(trip => ({ ...trip.toObject(), userId: user._id })));
+    
+    // Filter out current user's trips
+    const availableTrips = allTrips.filter(trip => !currentUser.trips.some(userTrip => userTrip._id.equals(trip._id)));
+
+    res.render('available.ejs', { user: currentUser, trips: currentUser.trips, availableTrips });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+
+  
 });
 
 router.get('/new', async (req, res) => {
