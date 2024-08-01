@@ -10,6 +10,9 @@
 ## Description
 On Your Way is a carpooling application that allows users to create, browse, and book trips. The application is designed to help users share rides, help drivers to make money, and those who don't have a car get cheaper prices to get to their destination. The platform features a user-friendly interface with a dark theme and consistent design across all pages.
 
+## The project is deployed in Heroku: 
+[OnYourWay](https://on-your-way-999-83f7b9fee724.herokuapp.com/)
+
 ## View my Project Planning in Trello: 
 [Project Planning](https://trello.com/b/Clqy38fv/car-pooling)
 
