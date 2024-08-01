@@ -4,23 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/show.css">
   <title>Trip Details</title>
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
 
   <% if (trip) { %>
+    <ul>
     <h2>Trip Details:</h2>
-    <h3><%= trip.startLocation %> to <%= trip.endLocation %></h3>
-    <h3>Available Seats: <%= trip.availableSeats %></h3>
-    <h3>Date: <%= trip.date.toDateString() %></h3>
-
+    <li><%= trip.startLocation %> to <%= trip.endLocation %></li>
+    <li>Available Seats: <%= trip.availableSeats %></li>
+    <li>Date: <%= trip.date.toDateString() %></li>
+  </ul>
     <% if (user) { %>
+      <ul>
       <h2>Driver Details:</h2>
-      <h3>Name: <%= user.name || 'N/A' %></h3>
-      <h3>Age: <%= user.age || 'N/A' %></h3>
-      <h3>Gender: <%= user.gender || 'N/A' %></h3>
-      <h3>Email: <%= user.email || 'N/A' %></h3>
+      <li>Name: <%= user.name || 'N/A' %></li>
+      <li>Age: <%= user.age || 'N/A' %></li>
+      <li>Gender: <%= user.gender || 'N/A' %></li>
+      <li>Email: <%= user.email || 'N/A' %></li>
+    </ul>
     <% } else { %>
       <h2>Driver Details: Not Available</h2>
     <% } %>

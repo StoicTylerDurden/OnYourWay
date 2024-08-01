@@ -18,7 +18,7 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const tripsCtrl = require('./controllers/trips.js');
 const authController = require('./controllers/auth.js');
 
-const port = process.env.PORT ? process.env.PORT : '4000';
+const port = process.env.PORT ? process.env.PORT : '3000';
 
 mongoose.connect(process.env.MONGODB_URI);
 

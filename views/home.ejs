@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
     <title>Select Trips</title>
 </head>
 <body>
     <%- include('partials/_navbar.ejs') %>
-    <h1>Select Trip Type</h1>
     <div>
-        <a href="/users/<%= user._id %>/trips"><button>Your Trips</button></a>
-        <a href="/users/<%= user._id %>/trips/available"><button>Available Trips</button></a>
+        <a href="/users/<%= user._id %>/trips"><button>Created Trips</button></a>
+        <a href="/users/<%= user._id %>/trips/available"><button>Browse Trips</button></a>
+        <a href="/users/<%= user._id %>/trips/booked"><button>Booked Trips</button></a>
+
     </div>
 </body>
 </html>
